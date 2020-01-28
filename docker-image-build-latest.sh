@@ -1,0 +1,1 @@
+docker build -f ./Dockerfile.build-latest -t switchroot:build-latest .

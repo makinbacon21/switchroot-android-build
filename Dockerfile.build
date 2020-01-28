@@ -1,0 +1,5 @@
+FROM switchroot:env
+
+RUN apt install -y vim-common
+
+RUN ./build.sh

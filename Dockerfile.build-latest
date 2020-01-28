@@ -1,0 +1,3 @@
+FROM switchroot:build
+RUN ./update-sources.sh
+RUN ./build.sh
