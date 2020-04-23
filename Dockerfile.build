@@ -1,5 +1,10 @@
+ARG ROM_NAME
 FROM switchroot:env
+
+ENV ROM_NAME $ROM_NAME
 
 RUN apt install -y vim-common
 
+RUN ./reset-changes-update-sources.sh
+RUN ./repopic-and-patch.sh
 RUN ./build.sh

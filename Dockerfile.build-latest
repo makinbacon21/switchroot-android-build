@@ -1,6 +1,5 @@
 FROM switchroot:build
-ADD ./commit-patches.sh /root/commit-patches.sh
 
-RUN ./commit-patches.sh
-RUN ./update-sources.sh
+RUN ./reset-changes-update-sources.sh
+RUN ./repopic-and-patch.sh
 RUN ./build.sh
