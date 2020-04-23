@@ -8,20 +8,14 @@ git add .
 git commit -m patch
 cd ..
 
-cd native
+cd opt/net/wifi
 git add .
 git commit -m patch
-cd ..
+cd ../../../
 
 cd ..
-cd vendor
 
-cd lineage
-git add .
-git commit -m patch
-cd ..
-
-cd nvidia
+cd kernel/nvidia/cypress-fmac
 git add .
 git commit -m patch
 cd ..
