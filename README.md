@@ -5,7 +5,7 @@ This repo provides A Dockerfile (`docker-scripts/Dockerfile`) to create the basi
 ## How to use
 
 - Install docker
-- Clone/Download this repo in a drive where you have at least 250GB of free space
+- Clone/Download this repo in a drive where you have at least 250GB of free space (this will take some time to download around 75GB of sources, and then between 2 to 12 hours to build)
 - Either prepend `sudo` to every command after this step, or allow the current user to run `docker` without sudo
 - Run `./build-android.sh <rom_name: icosa | foster | foster_tab>` 
 - Run `./extract-images.sh <rom_name: icosa | foster | foster_tab>`. It will copy the required images to `~/Downloads/images`
