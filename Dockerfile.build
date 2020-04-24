@@ -3,7 +3,7 @@ FROM switchroot:env
 
 ARG ROM_NAME
 
-#RUN apt install -y vim-common
+RUN apt install -y vim-common
 
 RUN ./repopic-and-patch.sh
 RUN ./build.sh
