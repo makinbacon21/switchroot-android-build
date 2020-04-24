@@ -5,7 +5,5 @@ ARG ROM_NAME
 
 #RUN apt install -y vim-common
 
-RUN ./reset-changes-update-sources.sh
 RUN ./repopic-and-patch.sh
-RUN export
 RUN ./build.sh
