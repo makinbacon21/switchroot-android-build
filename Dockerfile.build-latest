@@ -1,5 +1,0 @@
-FROM switchroot:build
-
-RUN ./reset-changes-update-sources.sh
-RUN ./repopic-and-patch.sh
-RUN ./build.sh
