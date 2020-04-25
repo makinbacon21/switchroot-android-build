@@ -9,8 +9,10 @@ else
     ROM_NAME=$1
 fi
 
+CURRENT_DIR=$(pwd | sed 's/ /\\ /g')
+
 docker build -t switchroot:build-android ./docker-scripts
 mkdir -p ./android/lineage
 
 echo Building $ROM_NAME
-docker run --rm -ti -e ROM_NAME=$ROM_NAME -v $(pwd)/android:/root/android switchroot:build-android /root/entrypoint.sh
+docker run --rm -ti -e ROM_NAME=$ROM_NAME -v $CURRENT_DIR/android:/root/android switchroot:build-android /root/entrypoint.sh
