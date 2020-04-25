@@ -13,3 +13,7 @@ This repo provides A Dockerfile (`docker-scripts/Dockerfile`) to create the basi
 ## How to fetch the latest code changes and rebuild
 
 - Any subsequent `./build-android.sh <rom_name: icosa | foster | foster_tab>` execution will detect that the `./android/lineage` directoy contains files and will work unde the assumption that the source code was already downloaded at least once. Then it will re-sync the repos, re-apply patches and re-build
+
+## How to start all over again
+
+- Run `./reset.sh` (requires `sudo`). It will delete your `android` directory, where all the sources and build outputs are, and delete the docker image with the environment for the builds.
