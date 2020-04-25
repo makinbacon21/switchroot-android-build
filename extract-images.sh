@@ -11,11 +11,11 @@ fi
 
 mkdir -p ~/Downloads/images
 
-CONTAINER=$(docker run --rm -ti -e ROM_NAME=$ROM_NAME -v "$PWD"/android:/root/android switchroot:build-android)
-docker exec $CONTAINER bash -c "mkdir /extract"
-docker exec $CONTAINER bash -c "cp /root/android/lineage/out/target/product/$ROM_NAME/lineage-16.0-*-UNOFFICIAL-$ROM_NAME.zip /extract" 
-docker exec $CONTAINER bash -c "cp /root/android/lineage/out/target/product/$ROM_NAME/obj/KERNEL_OBJ/arch/arm64/boot/dts/tegra210-icosa.dtb /extract"
-
-docker cp $CONTAINER:/extract ~/Downloads/images
-
-docker rm -f $CONTAINER
+mkdir -p ./extract
+echo "Copying zip..."
+cp ./android/lineage/out/target/product/$ROM_NAME/lineage-16.0-*-UNOFFICIAL-$ROM_NAME.zip ./extract 
+echo "Copying dtb..."
+cp ./android/lineage/out/target/product/$ROM_NAME/obj/KERNEL_OBJ/arch/arm64/boot/dts/tegra210-icosa.dtb ./extract
+echo "Moving to ~/Downloads/images..."
+mv ./extract/* ~/Downloads/images/
+rm -rf ./extract
