@@ -4,7 +4,7 @@ This repo provides A Dockerfile (`docker-scripts/Dockerfile`) to create the basi
 
 ## TL;DR
 
-- Download and build latest sources:
+Download and build latest sources:
 ```bash
 mkdir -p ./android/lineage
 sudo docker run --rm -ti -e ROM_NAME=icosa -v "$PWD"/android:/root/android pablozaiden/switchroot-android-build
