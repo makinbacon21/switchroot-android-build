@@ -2,6 +2,14 @@
 
 This repo provides A Dockerfile (`docker-scripts/Dockerfile`) to create the basic environment for building Lineage and Switchroot Android
 
+## TL;DR
+
+- Download and build latest sources:
+```bash
+mkdir -p ./android/lineage
+sudo docker run --rm -ti -e ROM_NAME=icosa -v "$PWD"/android:/root/android pablozaiden/switchroot-android-build
+```
+
 ## How to use
 
 *Important*: By default, the docker image builds everything in the `/root/android` directory, inside the container. The `./build-android.sh` script mounts the host directory `./android` as a volume to that directory in the container, so the sources and build output can live after the container is destroyed.
