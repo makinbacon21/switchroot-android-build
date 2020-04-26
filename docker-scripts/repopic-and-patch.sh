@@ -13,8 +13,8 @@ cd /root/android/lineage/
 cd /root/android/lineage/frameworks/base
 patch -p1 < ../../.repo/local_manifests/patches/frameworks_base-rsmouse.patch
 
-cd /root/android/lineage/frameworks/opt/net/wifi
-patch -p1 < ../../../../.repo/local_manifests/patches/frameworks_opt_net_wifi-statemachine_retry.patch
+cd /root/android/lineage/device/nvidia/foster_tab
+patch -p1 < ../../../.repo/local_manifests/patches/device_nvidia_foster_tab-beyonder.patch
 
 cd /root/android/lineage/kernel/nvidia/cypress-fmac
 patch -p1 < ../../../.repo/local_manifests/patches/kernel_nvidia_cypress-fmac.patch
