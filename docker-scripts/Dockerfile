@@ -19,10 +19,15 @@ RUN chmod a+x /root/bin/repo
 
 ENV PATH="/root/platform-tools:/root/jdk-9.0.4/bin:/root/bin:${PATH}"
 
+#by default, build icosa
+ENV ROM_NAME "icosa"
+
 WORKDIR /root
-ADD ./entrypoint.sh /root/entrypoint.sh
+ADD ./default-command.sh /root/default-command.sh
 ADD ./get-sources.sh /root/get-sources.sh
 ADD ./build.sh /root/build.sh
 ADD ./repopic-and-patch.sh /root/repopic-and-patch.sh
 ADD ./reset-changes-update-sources.sh /root/reset-changes-update-sources.sh
 RUN chmod a+x ./*.sh
+
+CMD /root/default-command.sh
