@@ -17,6 +17,7 @@ RUN mkdir -p /root/bin
 RUN curl https://storage.googleapis.com/git-repo-downloads/repo > /root/bin/repo
 RUN chmod a+x /root/bin/repo
 
+RUN mkdir -p /root/android/lineage
 ENV PATH="/root/platform-tools:/root/jdk-9.0.4/bin:/root/bin:${PATH}"
 
 #by default, build icosa
