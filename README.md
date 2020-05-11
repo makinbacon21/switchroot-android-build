@@ -25,7 +25,7 @@ If you _don't want_ to do this, just create a container of the `pablozaiden/swit
 ### Use the image in Dockerhub
 
 - `mkdir -p ./android/lineage`: Create the directory for the sources and build output
-- `sudo docker run --rm -ti -e ROM_NAME=icosa -v "$PWD"/android:/root/android pablozaiden/switchroot-android-build`: Download sources and build (you can replace `icosa` with `foster` or `foster_tab`)
+- `sudo docker run --rm -ti -e ROM_NAME=icosa -v "$PWD"/android:/root/android pablozaiden/switchroot-android-build:1.0.0`: Download sources and build (you can replace `icosa` with `foster` or `foster_tab`)
 - Copy the desired output files from `./android/lineage/out/target/product/`
 
 ### Build everything locally
@@ -33,7 +33,7 @@ If you _don't want_ to do this, just create a container of the `pablozaiden/swit
 - Clone/Download this repo in a drive where you have at least 250GB of free space (this will take some time to download around 75GB of sources, and then between 2 to 12 hours to build)
 - Either prepend `sudo` to the first command, or allow the current user to run `docker` without sudo
 - Run `./build-android.sh <rom_name: icosa | foster | foster_tab>` 
-- Run `./extract-images.sh <rom_name: icosa | foster | foster_tab>`. It will copy the required images to `~/Downloads/images`
+- Run `./extract-images.sh <rom_name: icosa | foster | foster_tab>`. It will copy the required images to `./extract`
 
 ## How to fetch the latest code changes and rebuild
 

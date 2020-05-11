@@ -9,13 +9,10 @@ else
     ROM_NAME=$1
 fi
 
-mkdir -p ~/Downloads/images
-
 mkdir -p ./extract
 echo "Copying zip..."
 cp ./android/lineage/out/target/product/$ROM_NAME/lineage-16.0-*-UNOFFICIAL-$ROM_NAME.zip ./extract 
 echo "Copying dtb..."
 cp ./android/lineage/out/target/product/$ROM_NAME/obj/KERNEL_OBJ/arch/arm64/boot/dts/tegra210-icosa.dtb ./extract
-echo "Moving to ~/Downloads/images..."
-mv ./extract/* ~/Downloads/images/
-rm -rf ./extract
+
+echo "Build extracted to ./extract"

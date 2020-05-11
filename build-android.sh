@@ -9,8 +9,5 @@ else
     ROM_NAME=$1
 fi
 
-docker build -t pablozaiden/switchroot-android-build ./docker-scripts
-mkdir -p ./android/lineage
-
-echo Building $ROM_NAME
-docker run --rm -ti -e ROM_NAME=$ROM_NAME -v "$PWD"/android:/root/android pablozaiden/switchroot-android-build
+./create-image.sh
+ROM_NAME=$ROM_NAME ./build-in-docker.sh
