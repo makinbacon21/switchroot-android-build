@@ -3,7 +3,6 @@
 This repo provides A Dockerfile (`docker-scripts/Dockerfile`) to create the basic environment for building Lineage and Switchroot Android
 
 ## TL;DR Guide:
-- Boot Linux
 - Install `docker`
 - Download and build latest switchroot android sources (you can change `icosa` with `foster` or `foster_tab`):
 ```bash
