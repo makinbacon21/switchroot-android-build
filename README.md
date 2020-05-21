@@ -7,7 +7,11 @@ This repo provides A Dockerfile (`docker-scripts/Dockerfile`) to create the basi
 - Download and build latest switchroot android sources (you can change `icosa` with `foster` or `foster_tab`):
 ```bash
 mkdir -p ./android/lineage
-sudo docker run --rm -ti -e ROM_NAME=icosa -v "$PWD"/android:/root/android pablozaiden/switchroot-android-build:1.0.0
+sudo docker run --rm -ti -e ROM_NAME=icosa -v "$PWD"/android:/root/android pablozaiden/switchroot-android-build:1.0.1
+```
+- Copy the build and required files to flash to the SD Card (replace `icosa` with if that was done before, and set the correct `sd_mount_point`)
+```
+./add-files-to-sd.sh icosa <sd_mount_point>
 ```
 
 ## How to use
@@ -24,8 +28,16 @@ If you _don't want_ to do this, just create a container of the `pablozaiden/swit
 ### Use the image in Dockerhub
 
 - `mkdir -p ./android/lineage`: Create the directory for the sources and build output
-- `sudo docker run --rm -ti -e ROM_NAME=icosa -v "$PWD"/android:/root/android pablozaiden/switchroot-android-build:1.0.0`: Download sources and build (you can replace `icosa` with `foster` or `foster_tab`)
+- `sudo docker run --rm -ti -e ROM_NAME=icosa -v "$PWD"/android:/root/android pablozaiden/switchroot-android-build:1.0.1`: Download sources and build (you can replace `icosa` with `foster` or `foster_tab`)
 - Copy the desired output files from `./android/lineage/out/target/product/`
+
+or
+
+- Run `./extract-images.sh <rom_name: icosa | foster | foster_tab>`. It will copy the required images to `./extract`
+
+or
+
+- Run `./add-files-to-sd.sh <rom_name> <sd_mount_point>` to copy the required files for flashing in hekate to the SD directly
 
 ### Build everything locally
 
@@ -33,6 +45,10 @@ If you _don't want_ to do this, just create a container of the `pablozaiden/swit
 - Either prepend `sudo` to the first command, or allow the current user to run `docker` without sudo
 - Run `./build-android.sh <rom_name: icosa | foster | foster_tab>` 
 - Run `./extract-images.sh <rom_name: icosa | foster | foster_tab>`. It will copy the required images to `./extract`
+
+*or*
+
+- Run `./add-files-to-sd.sh <rom_name> <sd_mount_point>` to copy all the required files to the SD directly
 
 ## How to fetch the latest code changes and rebuild
 

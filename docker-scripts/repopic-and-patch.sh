@@ -8,7 +8,7 @@ cd /root/android/lineage/
 /root/android/lineage/vendor/lineage/build/tools/repopick.py -t joycon-p
 /root/android/lineage/vendor/lineage/build/tools/repopick.py -t icosa-bt
 /root/android/lineage/vendor/lineage/build/tools/repopick.py 272671
-
+/root/android/lineage/vendor/lineage/build/tools/repopick.py -t backuptool-cleanup-p
 
 cd /root/android/lineage/frameworks/base
 patch -p1 < ../../.repo/local_manifests/patches/frameworks_base-rsmouse.patch
