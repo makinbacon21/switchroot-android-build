@@ -22,6 +22,8 @@ ENV PATH="/root/platform-tools:/root/jdk-9.0.4/bin:/root/bin:${PATH}"
 
 #by default, build icosa
 ENV ROM_NAME "icosa"
+#by default, build zip
+ENV ROM_TYPE "zip"
 
 WORKDIR /root
 ADD ./default-command.sh /root/default-command.sh
