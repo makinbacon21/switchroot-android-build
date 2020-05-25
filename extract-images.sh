@@ -10,9 +10,36 @@ else
 fi
 
 mkdir -p ./extract
-echo "Copying zip..."
-cp ./android/lineage/out/target/product/$ROM_NAME/lineage-16.0-*-UNOFFICIAL-$ROM_NAME.zip ./extract 
-echo "Copying dtb..."
-cp ./android/lineage/out/target/product/$ROM_NAME/obj/KERNEL_OBJ/arch/arm64/boot/dts/tegra210-icosa.dtb ./extract
+if test -d "./android/lineage/out/target/product/$ROM_NAME/lineage-16.0-*-UNOFFICIAL-$ROM_NAME.zip"
+    then
+    echo "Copying zip..."
+    cp ./android/lineage/out/target/product/$ROM_NAME/lineage-16.0-*-UNOFFICIAL-$ROM_NAME.zip ./extract
+fi
+
+if test -f "./android/lineage/out/target/product/$ROM_NAME/obj/KERNEL_OBJ/arch/arm64/boot/dts/tegra210-icosa.dtb"
+    then
+    echo "Copying dtb..."
+    cp ./android/lineage/out/target/product/$ROM_NAME/obj/KERNEL_OBJ/arch/arm64/boot/dts/tegra210-icosa.dtb ./extract
+fi
+
+if test -f "./android/lineage/out/target/product/$ROM_NAME/vendor.img"
+    then echo "Copying vendor..."
+    cp ./android/lineage/out/target/product/$ROM_NAME/vendor.img ./extract
+fi
+
+if test -f "./android/lineage/out/target/product/$ROM_NAME/boot.img"
+    then echo "Copying boot..."
+    cp ./android/lineage/out/target/product/$ROM_NAME/boot.img ./extract
+fi
+
+if test -f "./android/lineage/out/target/product/$ROM_NAME/system.img"
+    then echo "Copying system..."
+    cp ./android/lineage/out/target/product/$ROM_NAME/system.img ./extract
+fi
+
+if test -f "./android/lineage/out/target/product/$ROM_NAME/recovery.img"
+    then echo "Copying recovery..."
+    cp ./android/lineage/out/target/product/$ROM_NAME/recovery.img ./extract
+fi
 
 echo "Build extracted to ./extract"
