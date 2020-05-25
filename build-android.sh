@@ -4,7 +4,7 @@ while (($# > 0))
 	do
 	declare Option="$1"
     
-    case $Option in:
+    case $Option in
     --rom)
         if [ "$Option" != "icosa" && "$Option" != "foster" && "$Option" != "foster_tab" ]
             then
