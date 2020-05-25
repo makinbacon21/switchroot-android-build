@@ -10,7 +10,7 @@ else
 fi
 
 mkdir -p ./extract
-if test -d "./android/lineage/out/target/product/$ROM_NAME/lineage-16.0-*-UNOFFICIAL-$ROM_NAME.zip"
+if ls ./android/lineage/out/target/product/$ROM_NAME/lineage-16.0-*-UNOFFICIAL-$ROM_NAME.zip 1> /dev/null 2>&1;
     then
     echo "Copying zip..."
     cp ./android/lineage/out/target/product/$ROM_NAME/lineage-16.0-*-UNOFFICIAL-$ROM_NAME.zip ./extract
