@@ -25,6 +25,9 @@ ENV ROM_NAME "icosa"
 #by default, build zip
 ENV ROM_TYPE "zip"
 
+#preserve cache in next to the code to improve build times
+ENV CCACHE_DIR "/root/android/.ccache"
+
 WORKDIR /root
 ADD ./default-command.sh /root/default-command.sh
 ADD ./get-sources.sh /root/get-sources.sh
