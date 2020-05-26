@@ -10,7 +10,7 @@ This repo provides A Dockerfile (`docker-scripts/Dockerfile`) to create the basi
 
 ```bash
 mkdir -p ./android/lineage
-sudo docker run --rm -ti -e ROM_NAME=icosa -e ROM_TYPE=zip -v "$PWD"/android:/root/android pablozaiden/switchroot-android-build:1.0.1
+sudo docker run --rm -ti -e ROM_NAME=icosa -e ROM_TYPE=zip -v "$PWD"/android:/root/android pablozaiden/switchroot-android-build:1.0.2
 ```
 - Copy the build and required files to flash to the SD Card (if you changed ROM_NAME before, change `icosa` to the rom name that you used, and set the correct `sd_mount_point`)
 ```
@@ -37,7 +37,7 @@ If you _don't want_ to do this, just create a container of the `pablozaiden/swit
 ### Use the image in Dockerhub
 
 - `mkdir -p ./android/lineage`: Create the directory for the sources and build output
-- `sudo docker run --rm -ti -e ROM_NAME=icosa -e ROM_TYPE=zip -v "$PWD"/android:/root/android pablozaiden/switchroot-android-build:1.0.1`: Download sources and build (you can replace `icosa` with `foster` or `foster_tab` and `zip` with `images`)
+- `sudo docker run --rm -ti -e ROM_NAME=icosa -e ROM_TYPE=zip -v "$PWD"/android:/root/android pablozaiden/switchroot-android-build:1.0.2`: Download sources and build (you can replace `icosa` with `foster` or `foster_tab` and `zip` with `images`)
 - Copy the desired output files from `./android/lineage/out/target/product/`
 
 or
