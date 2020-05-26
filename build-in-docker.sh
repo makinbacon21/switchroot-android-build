@@ -1,12 +1,12 @@
 #!/bin/bash
 
-if [ "x$ROM_NAME" == "x"  ];
+if [[ -z $ROM_NAME ]]
 then
     echo "Missing ROM_NAME env variable. Expected icosa | foster | foster_tab"
     exit 1
 fi
 
-if [ "x$ROM_TYPE" == "x"  ];
+if [[ -z $ROM_TYPE ]]
 then
     echo "Missing ROM_TYPE env variable. Expected zip | images"
     exit 1
