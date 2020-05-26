@@ -1,52 +1,52 @@
 #!/bin/bash
 
 while (($# > 0))
-	do
-	declare Option="$1"
-    declare Val="$2"
-    
-    echo Option: $Option
-    echo Val: $Val
+    do
+    declare Option="$1"
+    declare Value="$2"
+
     case $Option in
     --rom)
-        if [[ "$Val" != "icosa" && "$Val" != "foster" && "$Val" != "foster_tab" ]]
+        if [[ "$Value" != "icosa" && "$Value" != "foster" && "$Value" != "foster_tab" ]]
             then
             echo "Invalid rom name. Expecting icosa | foster | foster_tab"
             exit 1
         fi
-        declare ROM_NAME="$Val"
+        declare ROM_NAME="$Value"
         shift
         shift
         ;;
+
     --rom-type)
-        if [[ "$Val" != "zip" && "$Val" != "images" ]]
+        if [[ "$Value" != "zip" && "$Value" != "images" ]]
             then
             echo "Invalid rom type. Expecting images | zip"
             exit 1
         fi
-        declare ROM_TYPE="$Val"
+        declare ROM_TYPE="$Value"
         shift
         shift
         ;;
+
+    --flags)
+        if [ -z ${Value##*--*} ]
+            then
+            echo "Flags must come last and the arguments must not be empty."
+            exit 1
+        fi
+        declare FLAGS="$Value"
+        shift
+        shift
+        ;;
+
     *)
-    echo "Unknown option. Ignoring $Option."
-    shift
-    ;;
+        echo "Unknown option. Ignoring $Option."
+        shift
+        ;;
+
     esac
 done
-           
 
-if [[ -z $ROM_TYPE ]]
-    then
-    echo "No rom type provided. Assuming zip"
-    declare ROM_TYPE="zip"
-fi
-
-if [[ -z $ROM_NAME ]]
-    then
-    echo "No rom name provided. Assuming icosa"
-    declare ROM_NAME="icosa"
-fi
-    
 ./create-image.sh
-ROM_NAME=$ROM_NAME ROM_TYPE=$ROM_TYPE ./build-in-docker.sh
+
+ROM_NAME=${ROM_NAME:-icosa} ROM_TYPE=${ROM_TYPE:-zip} FLAGS=${FLAGS:-""} ./build-in-docker.sh
