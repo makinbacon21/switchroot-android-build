@@ -3,25 +3,28 @@
 while (($# > 0))
 	do
 	declare Option="$1"
+    declare Val="$2"
     
+    echo Option: $Option
+    echo Val: $Val
     case $Option in
     --rom)
-        if [ "$Option" != "icosa" && "$Option" != "foster" && "$Option" != "foster_tab" ]
+        if [[ "$Val" != "icosa" && "$Val" != "foster" && "$Val" != "foster_tab" ]]
             then
             echo "Invalid rom name. Expecting icosa | foster | foster_tab"
             exit 1
         fi
-        declare ROM_NAME="$Option"
+        declare ROM_NAME="$Val"
         shift
         shift
         ;;
     --rom-type)
-        if [ "$Option" != "zip" && "$Option" != "images" ]
+        if [[ "$Val" != "zip" && "$Val" != "images" ]]
             then
             echo "Invalid rom type. Expecting images | zip"
             exit 1
         fi
-        declare ROM_TYPE="$Option"
+        declare ROM_TYPE="$Val"
         shift
         shift
         ;;
