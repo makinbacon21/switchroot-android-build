@@ -8,4 +8,4 @@ git pull
 
 cd ../..
 
-repo sync
+repo sync -c -j16
