@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -d ./android/lineage ]; then
+if [ "$(ls -A ./android/lineage)" ]; then
     echo "Sources found. Skipping..."
 else
     echo "Getting sources..."
