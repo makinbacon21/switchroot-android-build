@@ -7,11 +7,11 @@ else
     ./get-sources.sh
 fi
 
-if [ -n ${FLAGS##*noupdate*} ]; then
+if [ ! -z ${FLAGS##*noupdate*} ]; then
     ./reset-changes-update-sources.sh
     ./repopic-and-patch.sh
 fi
 
-if [ -n ${FLAGS##*nobuild*} ]; then
+if [ ! -z ${FLAGS##*nobuild*} ]; then
     ./build.sh
 fi

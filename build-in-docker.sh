@@ -8,16 +8,14 @@ else
     echo "ROM name: $ROM_NAME"
 fi
 
-if [ -z $ROM_TYPE ];
-then
+if [ -z $ROM_TYPE ]; then
     echo "Missing ROM_TYPE env variable. Expected zip | images"
     exit 1
 else
     echo "ROM type: $ROM_TYPE"
 fi
 
-if [ -n $FLAGS ];
-then
+if [ -n $FLAGS ]; then
     echo "Flags: $FLAGS"
 fi
 
