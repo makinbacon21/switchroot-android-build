@@ -7,8 +7,7 @@ while (($# > 0))
 
     case $Option in
     --rom)
-        if [[ "$Value" != "icosa" && "$Value" != "foster" && "$Value" != "foster_tab" ]]
-            then
+        if [[ "$Value" != "icosa" && "$Value" != "foster" && "$Value" != "foster_tab" ]]; then
             echo "Invalid rom name. Expecting icosa | foster | foster_tab"
             exit 1
         fi
@@ -18,8 +17,7 @@ while (($# > 0))
         ;;
 
     --rom-type)
-        if [[ "$Value" != "zip" && "$Value" != "images" ]]
-            then
+        if [[ "$Value" != "zip" && "$Value" != "images" ]]; then
             echo "Invalid rom type. Expecting images | zip"
             exit 1
         fi
@@ -29,8 +27,7 @@ while (($# > 0))
         ;;
 
     --flags)
-        if [ -z ${Value##*--*} ]
-            then
+        if [ -z ${Value##*--*} ]; then
             echo "Flags must come last and the arguments must not be empty."
             exit 1
         fi
