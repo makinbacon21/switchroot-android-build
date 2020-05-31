@@ -26,6 +26,8 @@ echo "Creating switchroot install dir..."
 mkdir -p $MOUNT_POINT/switchroot/install
 echo "Copying build zip to SD Card..."
 cp $ZIP_FILE $MOUNT_POINT/
+echo "Copying build combined kernel and ramdisk to SD Card..."
+cp ./extract/boot.img $MOUNT_POINT/switchroot/install/
 echo "Copying build dtb to SD Card..."
 cp ./extract/tegra210-icosa.dtb $MOUNT_POINT/switchroot/install/
 echo "Copying twrp to SD Card..."
