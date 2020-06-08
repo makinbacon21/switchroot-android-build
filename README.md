@@ -19,7 +19,7 @@ mkdir -p ./android/lineage
 sudo docker run --rm -ti -e ROM_NAME=icosa -v "$PWD"/android:/root/android pablozaiden/switchroot-android-build:latest
 ```
 - Continue with the [Shitty Pie Guide](https://gitlab.com/ZachyCatGames/shitty-pie-guide), right after `make bacon`
-
+- Note that the output of this build can also be used with hekate partitioning tools.
 
 ## Detailed usage information
 
