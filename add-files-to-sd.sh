@@ -1,5 +1,8 @@
 #!/bin/bash
 
+## This script copies the build output to the SD card mount point 
+## so it can be used by hekate
+
 if [ "x$1" == "x"  ];
 then
     echo "Missing rom name. Expected icosa | foster | foster_tab"

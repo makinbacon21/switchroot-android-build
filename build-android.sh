@@ -1,5 +1,13 @@
 #!/bin/bash
 
+## This script creates the build image locally and builds Android
+## Possible parameters:
+##  --rom: rom to build. Possible values: icosa | foster | foster_tab
+##  --rom-type: build output. Possible values: zip | images
+##  --flags: flags to pass to the build script. Possible values: string that contains:
+##      - nobuild: avoids running the build process
+##      - noupdate: avoids running the sources update process
+
 while (($# > 0))
     do
     declare Option="$1"

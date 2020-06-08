@@ -1,5 +1,7 @@
 #!/bin/bash
 
+## This script builds Andorid with an existing docker image
+
 if [ -z $ROM_NAME ];
 then
     echo "Missing ROM_NAME env variable. Expected icosa | foster | foster_tab"

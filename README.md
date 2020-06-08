@@ -1,69 +1,46 @@
 # Dockerized environment to build Switchroot Android image
 
-This repo provides A Dockerfile (`docker-scripts/Dockerfile`) to create the basic environment for building Lineage and Switchroot Android
+This repo provides A Dockerfile (`docker-scripts/Dockerfile`) to create the basic environment for building Lineage and Switchroot Android.
 
-## TL;DR Guide:
+## Read this before doing anything else, or Voldemort will come for you:
+This build environment is meant to replace the first part of the following guide: [Shitty Pie Guide](https://gitlab.com/ZachyCatGames/shitty-pie-guide)
+
+Read and understand that guide before continuing.
+
+After doing that, you can use this to replace everything in that guide up to `make bacon`. The output of this build should be the same output as that command.
+
+## Build using the image in Dockerhub:
+- Boot Linux (natively or a VM. Don't use *WSL* or *WSL 2* unless you *really* know what you are doing, since it has severe performance issues with this particular scenario)
 - Install `docker` (proper docker installation. Avoid using Snap) 
-- Download and build latest switchroot android sources
-- Change the value of ROM_NAME to build different roms. Available roms: `icosa` (default android), `foster` (android tv, includes nvidia apps), `foster_tab` (default android, includes nvidia apps)
-- Change the value of ROM_TYPE to change the rom type. Available types: `zip` (recommended, builds a flashable zip), `images` (builds individual images)
-
+- Go to a directory on a drive where there are at least 250GB of free space.
+- Run the following commands:
 ```bash
 mkdir -p ./android/lineage
-sudo docker run --rm -ti -e ROM_NAME=icosa -e ROM_TYPE=zip -v "$PWD"/android:/root/android pablozaiden/switchroot-android-build:1.0.4
+sudo docker run --rm -ti -e ROM_NAME=icosa -v "$PWD"/android:/root/android pablozaiden/switchroot-android-build:latest
 ```
-- Copy the build and required files to flash to the SD Card (if you changed ROM_NAME before, change `icosa` to the rom name that you used, and set the correct `sd_mount_point`)
-```
-./add-files-to-sd.sh icosa <sd_mount_point>
-```
-
-- *or* if you changed BUILD_TYPE to `images`, extract the images so that you can flash them with fastboot/dd/scripts/whatever. Once again, if you changed ROM_NAME before, change `icosa` to whatever rom name you used.
-```
-./extract-images.sh icosa
-```
+- Continue with the [Shitty Pie Guide](https://gitlab.com/ZachyCatGames/shitty-pie-guide), right after `make bacon`
 
 
-## How to use
-
-*Important*: By default, the docker image builds everything in the `/root/android` directory, inside the container. The `./build-android.sh` script mounts the host directory `./android` as a volume to that directory in the container, so the sources and build output can live after the container is destroyed.
-If you _don't want_ to do this, just create a container of the `pablozaiden/switchroot-android-build` docker image using the default command and it will download the latest sources and build everything. Take in account that doing this will result in losing the downloaded sources and build output after the container is destroyed.
-
+## Detailed usage information
 
 ### Requirements
 - Docker
 - At least 8GB RAM
 - At least 200GB of free storage
 
-### Use the image in Dockerhub
-
-- `mkdir -p ./android/lineage`: Create the directory for the sources and build output
-- `sudo docker run --rm -ti -e ROM_NAME=icosa -e ROM_TYPE=zip -v "$PWD"/android:/root/android pablozaiden/switchroot-android-build:1.0.4`: Download sources and build (you can replace `icosa` with `foster` or `foster_tab` and `zip` with `images`)
-- Copy the desired output files from `./android/lineage/out/target/product/`
-
-or
-
-- Run `./extract-images.sh <rom_name: icosa | foster | foster_tab>`. It will copy the required images to `./extract`
-
-or
-
-- Run `./add-files-to-sd.sh <rom_name> <sd_mount_point>` to copy the required files for flashing in hekate to the SD directly
-
 ### Build everything locally
 
-- Clone/Download this repo in a drive where you have at least 250GB of free space (this will take some time to download around 75GB of sources, and then between 2 to 12 hours to build)
+- Clone/Download this repo.
 - Either prepend `sudo` to the first command, or allow the current user to run `docker` without sudo
-- Run `./build-android.sh --rom <icosa | foster | foster_tab> --rom-type <zip | images>`  
-Both options are optional. Default for --rom is `icosa`, default for --rom-type is `zip`
-- Run `./extract-images.sh <rom_name: icosa | foster | foster_tab>`. It will copy the required images to `./extract`
+- Run `./build-android.sh --rom <icosa | foster | foster_tab> --rom-type <zip | images> --flags <nobuild | noupdate>`  
+All parameters are optional. Default for --rom is `icosa`, default for --rom-type is `zip`, default for --flags is empty
 
-*or*
+- Any subsequent build execution will detect that the `./android/lineage` directoy contains files and will work under the assumption that the source code was already downloaded at least once. Then it will re-sync the repos, re-apply patches and re-build
 
-- Run `./add-files-to-sd.sh <rom_name> <sd_mount_point>` to copy all the required files to the SD directly
+*Important*: The docker image builds everything in the `/root/android` directory, inside the container. The `./build-android.sh` script mounts the host directory `./android` as a volume to that directory in the container, so the sources and build output can live after the container is destroyed.
 
-## How to fetch the latest code changes and rebuild
+If that directory is not properly mounted, the build may fail.
 
-- Any subsequent build execution will detect that the `./android/lineage` directoy contains files and will work unde the assumption that the source code was already downloaded at least once. Then it will re-sync the repos, re-apply patches and re-build
+### Convenience scripts
 
-## How to start all over again
-
-- Run `./reset.sh` (requires `sudo`). It will delete your `android` directory, where all the sources and build outputs are, and delete the docker image with the environment for the builds.
+There are several `.sh` scripts in the repo root, for convenience. You can find usage documentation inside each script.

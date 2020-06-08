@@ -1,5 +1,7 @@
 #!/bin/bash
 
+## This script extracts the build output to ./extract
+
 if [ "x$1" == "x"  ];
 then
     echo "Missing rom name. Expected icosa | foster | foster_tab"
