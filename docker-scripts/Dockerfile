@@ -14,6 +14,7 @@ ADD ./get-sources.sh /root/get-sources.sh
 ADD ./build.sh /root/build.sh
 ADD ./repopic-and-patch.sh /root/repopic-and-patch.sh
 ADD ./reset-changes-update-sources.sh /root/reset-changes-update-sources.sh
+ADD ./copy-to-output.sh /root/copy-to-output.sh
 RUN chmod a+x ./*.sh
 
 CMD /root/default-command.sh

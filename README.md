@@ -18,8 +18,8 @@ After doing that, you can use this to replace everything in that guide up to `ma
 mkdir -p ./android/lineage
 sudo docker run --rm -ti -e ROM_NAME=icosa -v "$PWD"/android:/root/android pablozaiden/switchroot-android-build:latest
 ```
-- Continue with the [Shitty Pie Guide](https://gitlab.com/ZachyCatGames/shitty-pie-guide), right after `make bacon`
-- Note that the output of this build can also be used with hekate partitioning tools.
+- Copy the content of `./android/output` to the root of your SD card
+- Partition and install from hekate
 
 ## Detailed usage information
 
@@ -32,9 +32,9 @@ sudo docker run --rm -ti -e ROM_NAME=icosa -v "$PWD"/android:/root/android pablo
 
 - Clone/Download this repo.
 - Either prepend `sudo` to the first command, or allow the current user to run `docker` without sudo
-- Run `./build-android.sh --rom <icosa | foster | foster_tab> --rom-type <zip | images> --flags <nobuild | noupdate>`  
+- Run `./build-android.sh --rom <icosa | foster | foster_tab> --rom-type <zip | images> --flags <nobuild | noupdate | nooutput>`  
 All parameters are optional. Default for --rom is `icosa`, default for --rom-type is `zip`, default for --flags is empty
-
+- When building the `zip`, the required output for installing via hekate will be copied to `./android/output`, unless the `nooutput` flag is present
 - Any subsequent build execution will detect that the `./android/lineage` directoy contains files and will work under the assumption that the source code was already downloaded at least once. Then it will re-sync the repos, re-apply patches and re-build
 
 *Important*: The docker image builds everything in the `/root/android` directory, inside the container. The `./build-android.sh` script mounts the host directory `./android` as a volume to that directory in the container, so the sources and build output can live after the container is destroyed.
