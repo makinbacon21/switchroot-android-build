@@ -3,11 +3,11 @@
 This repo provides A Dockerfile (`docker-scripts/Dockerfile`) to create the basic environment for building Lineage and Switchroot Android.
 
 ## Read this before doing anything else, or Voldemort will come for you:
-This build environment is meant to replace the first part of the following guide: [Shitty Pie Guide](https://gitlab.com/ZachyCatGames/shitty-pie-guide)
+This build environment is meant to automate the steps from the following guide: [Shitty Pie Guide](https://gitlab.com/ZachyCatGames/shitty-pie-guide)
 
 Read and understand that guide before continuing.
 
-After doing that, you can use this to replace everything in that guide up to `make bacon`. The output of this build should be the same output as that command.
+After doing that, you can use this to generate the content of your SD card for flashing and installing via hekate and twrp.
 
 ## Build using the image in Dockerhub:
 - Boot Linux (natively or a VM. Don't use *WSL* or *WSL 2* unless you *really* know what you are doing, since it has severe performance issues with this particular scenario)
