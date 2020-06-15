@@ -3,14 +3,16 @@
 ## This script copies the build output to the output dir
 ## so it can be used by hekate
 
-./extract-images.sh $ROM_NAME
-
 ZIP_FILE=$(ls -rt ./android/lineage/out/target/product/$ROM_NAME/lineage-16.0-*-UNOFFICIAL-$ROM_NAME.zip | tail -1)
 
 echo "Creating switchroot install dir..."
 mkdir -p ./android/output/switchroot/install
 echo "Creating switchroot android dir..."
 mkdir -p ./android/output/switchroot/android
+echo "Downloading hekate..."
+LATEST_HEKATE=$(curl -sL https://github.com/CTCaer/hekate/releases/latest | grep -o '/CTCaer/hekate/releases/download/.*/hekate_ctcaer.*zip')
+curl -L -o ./hekate.zip https://github.com/$LATEST_HEKATE
+unzip -u ./hekate.zip -d ./android/output/
 echo "Creating bootloader config dir..."
 mkdir -p ./android/output/bootloader/ini
 echo "Copying build zip to SD Card..."
