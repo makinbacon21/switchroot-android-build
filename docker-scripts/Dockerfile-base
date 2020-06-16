@@ -40,7 +40,7 @@ RUN apt update -y && apt upgrade -y && apt install -y \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-RUN git config --global user.email "fake@name.com" && git config --global user.name Fake Name
+RUN git config --global user.email "fake@name.com" && git config --global user.name Fake Name && git config --global color.ui false
 
 RUN wget https://dl.google.com/android/repository/platform-tools-latest-linux.zip \
     && unzip platform-tools-latest-linux.zip -d ~ \
