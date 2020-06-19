@@ -22,11 +22,11 @@ cp ./android/lineage/out/target/product/$ROM_NAME/boot.img ./android/output/swit
 echo "Copying build dtb..."
 cp ./android/lineage/out/target/product/$ROM_NAME/obj/KERNEL_OBJ/arch/arm64/boot/dts/tegra210-icosa.dtb ./android/output/switchroot/install/
 echo "Downloading twrp..."
-curl -o ./android/output/switchroot/install/twrp.img https://github.com/PabloZaiden/switchroot-android-build/raw/master/external/twrp.img
+curl -L -o ./android/output/switchroot/install/twrp.img https://github.com/PabloZaiden/switchroot-android-build/raw/master/external/twrp.img
 echo "Downloading coreboot.rom..."
-curl -o ./android/output/switchroot/android/coreboot.rom https://cdn.discordapp.com/attachments/667093920005619742/702602200991662210/coreboot.rom
+curl -L -o ./android/output/switchroot/android/coreboot.rom https://cdn.discordapp.com/attachments/667093920005619742/702602200991662210/coreboot.rom
 echo "Downloading 00-android.ini..."
-curl -o ./android/output/bootloader/ini/00-android.ini https://gitlab.com/ZachyCatGames/shitty-pie-guide/-/raw/master/00-android.ini?inline=false
+curl -L -o ./android/output/bootloader/ini/00-android.ini https://gitlab.com/ZachyCatGames/shitty-pie-guide/-/raw/master/00-android.ini?inline=false
 echo "Downloading boot scripts..."
-curl -o ./android/output/switchroot/android/common.scr https://gitlab.com/switchroot/bootstack/switch-uboot-scripts/-/jobs/artifacts/master/raw/common.scr?job=build
-curl -o ./android/output/switchroot/android/boot.scr https://gitlab.com/switchroot/bootstack/switch-uboot-scripts/-/jobs/artifacts/master/raw/sd.scr?job=build
+curl -L -o ./android/output/switchroot/android/common.scr https://gitlab.com/switchroot/bootstack/switch-uboot-scripts/-/jobs/artifacts/master/raw/common.scr?job=build
+curl -L -o ./android/output/switchroot/android/boot.scr https://gitlab.com/switchroot/bootstack/switch-uboot-scripts/-/jobs/artifacts/master/raw/sd.scr?job=build
