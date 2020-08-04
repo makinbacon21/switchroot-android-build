@@ -16,7 +16,7 @@ After doing that, you can use this to generate the content of your SD card for f
 - Run the following commands:
 ```bash
 mkdir -p ./android/lineage
-sudo docker run --rm -ti -e ROM_NAME=icosa -v "$PWD"/android:/root/android pablozaiden/switchroot-android-build:latest
+sudo docker run --rm -ti -e ROM_NAME=icosa -v "$PWD"/android:/build/android pablozaiden/switchroot-android-build:latest
 ```
 - Copy the content of `./android/output` to the root of your SD card
 - Partition and install from hekate
@@ -37,7 +37,7 @@ All parameters are optional. Default for --rom is `icosa`, default for --rom-typ
 - When building the `zip`, the required output for installing via hekate will be copied to `./android/output`, unless the `nooutput` flag is present
 - Any subsequent build execution will detect that the `./android/lineage` directoy contains files and will work under the assumption that the source code was already downloaded at least once. Then it will re-sync the repos, re-apply patches and re-build
 
-*Important*: The docker image builds everything in the `/root/android` directory, inside the container. The `./build-android.sh` script mounts the host directory `./android` as a volume to that directory in the container, so the sources and build output can live after the container is destroyed.
+*Important*: The docker image builds everything in the `/build/android` directory, inside the container. The `./build-android.sh` script mounts the host directory `./android` as a volume to that directory in the container, so the sources and build output can live after the container is destroyed.
 
 If that directory is not properly mounted, the build may fail.
 

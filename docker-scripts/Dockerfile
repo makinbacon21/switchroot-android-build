@@ -6,15 +6,18 @@ ENV ROM_NAME "icosa"
 ENV ROM_TYPE "zip"
 
 #preserve cache in next to the code to improve build times
-ENV CCACHE_DIR "/root/android/.ccache"
+ENV CCACHE_DIR "${BUILDBASE}/android/.ccache"
 
-WORKDIR /root
-ADD ./default-command.sh /root/default-command.sh
-ADD ./get-sources.sh /root/get-sources.sh
-ADD ./build.sh /root/build.sh
-ADD ./repopic-and-patch.sh /root/repopic-and-patch.sh
-ADD ./reset-changes-update-sources.sh /root/reset-changes-update-sources.sh
-ADD ./copy-to-output.sh /root/copy-to-output.sh
-RUN chmod a+x ./*.sh
+USER build
+WORKDIR ${BUILDBASE}
 
-CMD /root/default-command.sh
+ADD --chown=build:build ./default-command.sh ${BUILDBASE}/default-command.sh
+ADD --chown=build:build ./get-sources.sh ${BUILDBASE}/get-sources.sh
+ADD --chown=build:build ./build.sh ${BUILDBASE}/build.sh
+ADD --chown=build:build ./repopic-and-patch.sh ${BUILDBASE}/repopic-and-patch.sh
+ADD --chown=build:build ./reset-changes-update-sources.sh ${BUILDBASE}/reset-changes-update-sources.sh
+ADD --chown=build:build ./copy-to-output.sh ${BUILDBASE}/copy-to-output.sh
+
+RUN chmod +x ./*.sh
+
+CMD ${BUILDBASE}/default-command.sh
