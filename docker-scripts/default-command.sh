@@ -18,6 +18,10 @@ fi
 if [[ -z $FLAGS || ! -z ${FLAGS##*nobuild*} ]]; then
     cd ${BUILDBASE}
     ./build.sh
+    RESULT=$?
+    if [[ $RESULT -ne 0 ]]; then
+        exit -1
+    fi
 fi
 
 if [[ "$ROM_TYPE" == "zip" ]]; then
