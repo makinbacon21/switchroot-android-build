@@ -3,6 +3,8 @@
 ## This script copies the build output to the output dir
 ## so it can be used by hekate
 
+cd ${BUILDBASE}
+
 ZIP_FILE=$(ls -rt ./android/lineage/out/target/product/$ROM_NAME/lineage-16.0-*-UNOFFICIAL-$ROM_NAME.zip | tail -1)
 
 echo "Creating switchroot install dir..."
