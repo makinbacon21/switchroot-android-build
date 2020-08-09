@@ -7,6 +7,8 @@
 ##  --flags: flags to pass to the build script. Possible values: string that contains:
 ##      - nobuild: avoids running the build process
 ##      - noupdate: avoids running the sources update process
+##      - nooutput: avoids copying the build to the output directory
+##      - with_twrp: builds twrp after a successfull pie build and copies it to the output directory
 
 while (($# > 0))
     do

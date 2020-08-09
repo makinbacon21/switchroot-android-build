@@ -31,3 +31,22 @@ if [[ "$ROM_TYPE" == "zip" ]]; then
         ./copy-to-output.sh
     fi
 fi
+
+if [[ -z ${FLAGS##*with_twrp*} ]]; then
+    cd ${BUILDBASE}
+    ./add-twrp-repo.sh
+    cd ${BUILDBASE}
+    ./build-twrp.sh
+    RESULT=$?
+    if [[ $RESULT -ne 0 ]]; then
+        exit -1
+    fi
+    
+    echo "Copying twrp output to ./android/output..."
+    cd ${BUILDBASE}
+    ./copy-twrp-to-output.sh
+
+    # restore original recovery dir
+    rm -rf ${BUILDBASE}/android/lineage/bootable/recovery
+    mv ${BUILDBASE}/android/recovery-backup ${BUILDBASE}/android/lineage/bootable/recovery
+fi

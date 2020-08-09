@@ -13,10 +13,13 @@ WORKDIR ${BUILDBASE}
 
 ADD --chown=build:build ./default-command.sh ${BUILDBASE}/default-command.sh
 ADD --chown=build:build ./get-sources.sh ${BUILDBASE}/get-sources.sh
+ADD --chown=build:build ./add-twrp-repo.sh ${BUILDBASE}/add-twrp-repo.sh
 ADD --chown=build:build ./build.sh ${BUILDBASE}/build.sh
+ADD --chown=build:build ./build-twrp.sh ${BUILDBASE}/build-twrp.sh
 ADD --chown=build:build ./repopic-and-patch.sh ${BUILDBASE}/repopic-and-patch.sh
 ADD --chown=build:build ./reset-changes-update-sources.sh ${BUILDBASE}/reset-changes-update-sources.sh
 ADD --chown=build:build ./copy-to-output.sh ${BUILDBASE}/copy-to-output.sh
+ADD --chown=build:build ./copy-twrp-to-output.sh ${BUILDBASE}/copy-twrp-to-output.sh
 
 RUN chmod +x ./*.sh
 

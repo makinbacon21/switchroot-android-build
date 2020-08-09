@@ -33,7 +33,7 @@ sudo docker run --rm -ti -e ROM_NAME=icosa -v "$PWD"/android:/build/android pabl
 
 - Clone/Download this repo.
 - Either prepend `sudo` to the first command, or allow the current user to run `docker` without sudo
-- Run `./build-android.sh --rom <icosa | foster | foster_tab> --rom-type <zip | images> --flags <nobuild | noupdate | nooutput>`  
+- Run `./build-android.sh --rom <icosa | foster | foster_tab> --rom-type <zip | images> --flags <nobuild | noupdate | nooutput | with_twrp>`  
 All parameters are optional. Default for --rom is `icosa`, default for --rom-type is `zip`, default for --flags is empty
 - When building the `zip`, the required output for installing via hekate will be copied to `./android/output`, unless the `nooutput` flag is present
 - Any subsequent build execution will detect that the `./android/lineage` directoy contains files and will work under the assumption that the source code was already downloaded at least once. Then it will re-sync the repos, re-apply patches and re-build
