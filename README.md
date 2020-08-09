@@ -2,7 +2,7 @@
 
 This repo provides A Dockerfile (`docker-scripts/Dockerfile`) to create the basic environment for building Lineage and Switchroot Android.
 
-## Read this before doing anything else, or Voldemort will come for you:
+## Read this before doing anything else, or Voldemort will come for you and summon his dragons:
 This build environment is meant to automate the steps from the following guide: [Shitty Pie Guide](https://gitlab.com/ZachyCatGames/shitty-pie-guide)
 
 Read and understand that guide before continuing.
