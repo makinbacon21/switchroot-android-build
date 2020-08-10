@@ -20,7 +20,7 @@ mkdir -p ./android/lineage
 sudo docker run --rm -ti -e ROM_NAME=icosa -v "$PWD"/android:/build/android pablozaiden/switchroot-android-build:latest
 ```
 - Copy the content of `./android/output` to the root of your SD card with only one partition with FAT32 format
-- Partition from Hekate, flash TWRP and install after that.
+- Partition from Hekate, flash TWRP and install after that. (it is expected to see some errors about mounting some partitions in TWRP the first time flashing)
 
 ## Detailed usage information
 
