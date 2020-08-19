@@ -2,6 +2,8 @@
 
 This repo provides A Dockerfile (`docker-scripts/Dockerfile`) to create the basic environment for building Lineage and Switchroot Android.
 
+**To use the prebuilt docker images, check out the [latest release](https://github.com/PabloZaiden/switchroot-android-build/releases/latest) in this GitHub repository.**
+
 ## Read this before doing anything else, or Voldemort will come for you and summon his dragons:
 This build environment is meant to automate the steps from the following guide: [Shitty Pie Guide](https://gitlab.com/ZachyCatGames/shitty-pie-guide)
 
