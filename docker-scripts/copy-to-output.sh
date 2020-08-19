@@ -28,7 +28,7 @@ curl -L -o ./android/output/switchroot/install/twrp.img https://github.com/Pablo
 echo "Downloading coreboot.rom..."
 curl -L -o ./android/output/switchroot/android/coreboot.rom https://cdn.discordapp.com/attachments/667093920005619742/702602200991662210/coreboot.rom
 echo "Downloading 00-android.ini..."
-curl -L -o ./android/output/bootloader/ini/00-android.ini https://gitlab.com/ZachyCatGames/shitty-pie-guide/-/raw/master/00-android.ini?inline=false
+curl -L -o ./android/output/bootloader/ini/00-android.ini https://gitlab.com/ZachyCatGames/shitty-pie-guide/-/raw/master/res/00-android.ini?inline=false
 echo "Downloading boot scripts..."
 curl -L -o ./android/output/switchroot/android/common.scr https://gitlab.com/switchroot/bootstack/switch-uboot-scripts/-/jobs/artifacts/master/raw/common.scr?job=build
 curl -L -o ./android/output/switchroot/android/boot.scr https://gitlab.com/switchroot/bootstack/switch-uboot-scripts/-/jobs/artifacts/master/raw/sd.scr?job=build
