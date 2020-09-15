@@ -22,6 +22,13 @@ if [ -n $FLAGS ]; then
 fi
 
 mkdir -p ./android/lineage
+MKDIRSTATUS=$?
+
+if [ $MKDIRSTATUS -ne 0 ]; then
+    echo "Could not create work folders; check permissions."
+    exit $MKDIRSTATUS
+fi
+
 echo Building $ROM_NAME
 
 BUILDBASE="/build"
