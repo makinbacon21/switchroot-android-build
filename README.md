@@ -13,7 +13,7 @@ After doing that, you can use this to generate the content of your SD card for f
 
 ## Build using the image in Dockerhub:
 - Boot Linux (natively or a VM. Don't use *WSL* or *WSL 2* unless you *really* know what you are doing, since it has severe performance issues with this particular scenario)
-- Install `docker` (proper docker installation. It *might* work if installed via Snap with the latest changes, but it wasn't tested) 
+- Install `docker` (**proper docker installation**: `apt install docker.io` if on Ubuntu. It *might* work if installed via Snap with the latest changes, but it wasn't tested) 
 - Go to a directory on a drive where there are at least 250GB of free space.
    - (Only if you have downloaded the sources before: make sure to change the owner on the `android` folder to 1000:1000, recursively;  `sudo chown -R 1000:1000 ./android` should do the trick. Current versions of the environment don't run as `root` anymore. As a last resort, remove the existing `android` folder altogether.)
 - Run the following commands:
