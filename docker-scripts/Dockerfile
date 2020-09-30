@@ -20,6 +20,7 @@ ADD --chown=build:build ./repopic-and-patch.sh ${BUILDBASE}/repopic-and-patch.sh
 ADD --chown=build:build ./reset-changes-update-sources.sh ${BUILDBASE}/reset-changes-update-sources.sh
 ADD --chown=build:build ./copy-to-output.sh ${BUILDBASE}/copy-to-output.sh
 ADD --chown=build:build ./copy-twrp-to-output.sh ${BUILDBASE}/copy-twrp-to-output.sh
+ADD --chown=build:build ./switch.xml ${BUILDBASE}/switch.xml
 
 RUN chmod +x ./*.sh
 
