@@ -13,6 +13,6 @@ rm -rf ./local_manifests
 mkdir -p local_manifests/patches
 cp ${BUILDBASE}/switch.xml ./local_manifests/switch.xml
 cp ${BUILDBASE}/bionic_intrinsics.patch ./local_manifests/patches/bionic_intrinsics.patch
-
+cp ${BUILDBASE}/disable_selinux.patch ./local_manifests/patches/disable_selinux.patch
 
 repo sync -j${JOBS}
