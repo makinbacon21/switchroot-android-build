@@ -22,8 +22,6 @@ ADD --chown=build:build ./copy-to-output.sh ${BUILDBASE}/copy-to-output.sh
 ADD --chown=build:build ./copy-twrp-to-output.sh ${BUILDBASE}/copy-twrp-to-output.sh
 ADD --chown=build:build ./switch.xml ${BUILDBASE}/switch.xml
 ADD --chown=build:build ./bionic_intrinsics.patch ${BUILDBASE}/bionic_intrinsics.patch
-ADD --chown=build:build ./disable_selinux.patch ${BUILDBASE}/disable_selinux.patch
-
 
 RUN chmod +x ./*.sh
 

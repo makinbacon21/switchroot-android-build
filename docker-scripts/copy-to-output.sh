@@ -5,7 +5,7 @@
 
 cd ${BUILDBASE}
 
-ZIP_FILE=$(ls -rt ./android/lineage/out/target/product/$ROM_NAME/lineage-16.0-*-UNOFFICIAL-$ROM_NAME.zip | tail -1)
+ZIP_FILE=$(ls -rt ./android/lineage/out/target/product/$ROM_NAME/lineage-17.1-*-UNOFFICIAL-$ROM_NAME.zip | tail -1)
 
 echo "Creating switchroot install dir..."
 mkdir -p ./android/output/switchroot/install
