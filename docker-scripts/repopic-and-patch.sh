@@ -10,5 +10,5 @@ ${BUILDBASE}/android/lineage/vendor/lineage/build/tools/repopick.py 284553
 cd ${BUILDBASE}/android/lineage/bionic
 patch -p1 < ${BUILDBASE}/android/lineage/.repo/local_manifests/patches/bionic_intrinsics.patch
 
-cd ${BUILDBASE}/android/lineage/system/core/
-patch -p1 < ${BUILDBASE}/android/lineage/.repo/local_manifests/patches/disable_selinux.patch
+#cd ${BUILDBASE}/android/lineage/system/core/
+#patch -p1 < ${BUILDBASE}/android/lineage/.repo/local_manifests/patches/disable_selinux.patch
