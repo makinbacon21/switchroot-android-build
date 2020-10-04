@@ -26,7 +26,7 @@ cp ./android/lineage/out/target/product/$ROM_NAME/obj/KERNEL_OBJ/arch/arm64/boot
 echo "Downloading twrp..."
 curl -L -o ./android/output/switchroot/install/twrp.img https://github.com/PabloZaiden/switchroot-android-build/raw/master/external/twrp.img
 echo "Downloading coreboot.rom..."
-curl -L -o ./android/output/switchroot/android/coreboot.rom https://cdn.discordapp.com/attachments/667093920005619742/702602200991662210/coreboot.rom
+curl -L -o ./android/output/switchroot/android/coreboot.rom https://cdn-125.anonfiles.com/7dWaidc0p5/12e1797a-1601813350/coreboot.rom
 echo "Downloading 00-android.ini..."
 curl -L -o ./android/output/bootloader/ini/00-android.ini https://gitlab.com/ZachyCatGames/shitty-pie-guide/-/raw/master/res/00-android.ini?inline=false
 echo "Downloading boot scripts..."

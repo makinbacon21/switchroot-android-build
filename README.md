@@ -9,6 +9,8 @@ This build environment is meant to automate the steps from the following guide: 
 
 Read and understand that guide before continuing.
 
+Also, if you have built Switchroot *Pie* before, delete the whole `./android` directory before starting with *Q*
+
 After doing that, you can use this to generate the content of your SD card for flashing and installing via Hekate and TWRP.
 
 ## Build using the image in Dockerhub:
