@@ -40,6 +40,16 @@ while (($# > 0))
         shift
         ;;
 
+    --custom-build)
+        if [[ -z ${Value} ]]; then
+            echo "Custom build must indicate a command to run"
+            exit 1
+        fi
+        declare CUSTOM_BUILD="$Value"
+        shift
+        shift
+        ;;
+
     --flags)
         if [ -z ${Value##*--*} ]; then
             echo "Flags must come last and the arguments must not be empty."
@@ -60,4 +70,4 @@ done
 
 ./create-image.sh
 
-DUMMY_BUILD=${DUMMY_BUILD:-""} ROM_NAME=${ROM_NAME:-icosa} ROM_TYPE=${ROM_TYPE:-zip} FLAGS=${FLAGS:-""} ./build-in-docker.sh
+DUMMY_BUILD=${DUMMY_BUILD:-""} CUSTOM_BUILD="${CUSTOM_BUILD:-""}" ROM_NAME=${ROM_NAME:-icosa} ROM_TYPE=${ROM_TYPE:-zip} FLAGS=${FLAGS:-""} ./build-in-docker.sh

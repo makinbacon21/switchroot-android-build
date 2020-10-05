@@ -15,8 +15,9 @@ lunch lineage_$ROM_NAME-userdebug
 sed -i '/BOARD_KERNEL_IMAGE_NAME := zImage/a BOARD_MKBOOTIMG_ARGS    += --cmdline " "' ${BUILDBASE}/android/lineage/device/nvidia/foster/BoardConfig.mk
 sed -i -E 's/^(BOARD_KERNEL_BASE\s+:=\s+0x80080000)/\#\1/' ${BUILDBASE}/android/lineage/device/nvidia/foster/BoardConfig.mk
 
-if [ "$ROM_TYPE" == "zip" ]
-  then
+if [[ ! -z "$CUSTOM_BUILD" ]]; then
+  nice $CUSTOM_BUILD
+elif [[ "$ROM_TYPE" == "zip" ]]; then
   nice make -j${JOBS} bacon
 else
   nice make -j${JOBS} bootimage && nice make -j${JOBS} vendorimage && nice make -j${JOBS} systemimage
