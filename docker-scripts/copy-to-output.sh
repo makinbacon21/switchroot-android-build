@@ -7,6 +7,7 @@ cd ${BUILDBASE}
 
 ZIP_FILE=$(ls -rt ./android/lineage/out/target/product/$ROM_NAME/lineage-17.1-*-UNOFFICIAL-$ROM_NAME.zip | tail -1)
 
+## Copy to output
 echo "Creating switchroot install dir..."
 mkdir -p ./android/output/switchroot/install
 echo "Creating switchroot android dir..."
@@ -32,3 +33,14 @@ curl -L -o ./android/output/bootloader/ini/00-android.ini https://gitlab.com/Zac
 echo "Downloading boot scripts..."
 curl -L -o ./android/output/switchroot/android/common.scr https://gitlab.com/switchroot/bootstack/switch-uboot-scripts/-/jobs/artifacts/master/raw/common.scr?job=build
 curl -L -o ./android/output/switchroot/android/boot.scr https://gitlab.com/switchroot/bootstack/switch-uboot-scripts/-/jobs/artifacts/master/raw/sd.scr?job=build
+
+
+## Patch zip file to accept any bootloader version
+OUTPUT_ZIP_FILE=$(ls -rt ./android/output/lineage-17.1-*-UNOFFICIAL-$ROM_NAME.zip | tail -1)
+
+mkdir -p ./META-INF/com/google/android/
+unzip -p $OUTPUT_ZIP_FILE META-INF/com/google/android/updater-script > ./META-INF/com/google/android/updater-script.original
+sed -E 's/getprop\(\"ro\.bootloader\"\)/true || getprop\(\"ro\.bootloader\"\)/g' < ./META-INF/com/google/android/updater-script.original > ./META-INF/com/google/android/updater-script
+rm ./META-INF/com/google/android/updater-script.original
+zip -u $OUTPUT_ZIP_FILE META-INF/com/google/android/updater-script
+rm -rf ./META-INF/com/google/android/
