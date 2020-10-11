@@ -21,6 +21,9 @@ After doing that, you can use this to generate the content of your SD card for f
 ```bash
 mkdir -p ./android/lineage
 sudo chown -R 1000:1000 ./android
+
+# Don't use the "latest" tag unless you know what you're doing. 
+# Use a versioned tag from https://hub.docker.com/r/pablozaiden/switchroot-android-build/tags
 sudo docker run --privileged --rm -ti -e ROM_NAME=icosa -v "$PWD"/android:/build/android pablozaiden/switchroot-android-build:latest
 ```
 - Copy the content of `./android/output` to the root of your SD card (partitioned as a single FAT32-formatted volume; format with Hekate as it ensures proper cluster size for performance)
