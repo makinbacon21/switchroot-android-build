@@ -13,4 +13,4 @@ git pull
 
 cd ../..
 
-repo sync -j${JOBS}
+repo sync --force-sync -j${JOBS}
