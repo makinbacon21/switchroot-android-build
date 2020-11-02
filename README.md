@@ -39,8 +39,11 @@ sudo docker run --privileged --rm -ti -e ROM_NAME=icosa -v "$PWD"/android:/build
 ### Build everything locally
 
 - Clone/Download this repo.
-- If you *don't want* to use `docker`, set any value to the `DISABLE_DOCKER` environment variable and set the `BUILDBASE` environment variable with the path of the base directory where the process will be executed. If `BUILDBASE` is not defined, it will use `$(pwd)/build`. Also, make sure to install all the prerequisites (a convenience script for Ubuntu (`install-prerequisites-ubuntu.sh`) is already provided)
-- If you're using `docker` Either prepend `sudo` to the first command, or allow the current user to run `docker` without sudo
+- If you *don't want* to use `docker`:
+    - Avoid having the docker service enabled *or* set any value to the `DISABLE_DOCKER` environment variable.
+    - Set the `BUILDBASE` environment variable to the path of the base directory where the process will be executed. If `BUILDBASE` is not defined, it will use `$(pwd)/build`. 
+    - Make sure to install all the prerequisites before starting (the convenience script `install-prerequisites-ubuntu.sh` is provided with this repo)
+- If you're using `docker` Either prepend `sudo` to the script execution, or allow the current user to run `docker` without `sudo`
 - Run `./build-android.sh --rom <icosa | foster | foster_tab> --rom-type <zip | images> --flags <nobuild | noupdate | nooutput | with_twrp>`  
 All parameters are optional. Default for --rom is `icosa`, default for --rom-type is `zip`, default for --flags is empty
 - When building the `zip`, the required output for installing via Hekate will be copied to `./android/output` or `$BUILDBASE/android/output`, unless the `nooutput` flag is present
