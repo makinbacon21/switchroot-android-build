@@ -1,6 +1,6 @@
 # Dockerized environment to build Switchroot Android image
 
-This repo provides A Dockerfile (`docker-scripts/Dockerfile`) to create the basic environment for building Lineage and Switchroot Android.
+This repo provides A Dockerfile (`build-scripts/Dockerfile`) to create the basic environment for building Lineage and Switchroot Android.
 
 **To use the prebuilt docker images, check out the [latest release](https://github.com/PabloZaiden/switchroot-android-build/releases/latest) in this GitHub repository.**
 

@@ -68,6 +68,48 @@ while (($# > 0))
     esac
 done
 
-./create-image.sh
+DUMMY_BUILD=${DUMMY_BUILD:-""}
+CUSTOM_BUILD="${CUSTOM_BUILD:-""}" 
+ROM_NAME=${ROM_NAME:-icosa} 
+ROM_TYPE=${ROM_TYPE:-zip} 
+FLAGS=${FLAGS:-""}
 
-DUMMY_BUILD=${DUMMY_BUILD:-""} CUSTOM_BUILD="${CUSTOM_BUILD:-""}" ROM_NAME=${ROM_NAME:-icosa} ROM_TYPE=${ROM_TYPE:-zip} FLAGS=${FLAGS:-""} ./build-in-docker.sh
+export DUMMY_BUILD
+export CUSTOM_BUILD
+export ROM_NAME
+export ROM_TYPE
+export FLAGS
+
+
+if [ -z $ROM_NAME ];
+then
+    echo "Missing ROM_NAME env variable. Expected icosa | foster | foster_tab"
+    exit 1
+else
+    echo "ROM name: $ROM_NAME"
+fi
+
+if [ -z $ROM_TYPE ]; then
+    echo "Missing ROM_TYPE env variable. Expected zip | images"
+    exit 1
+else
+    echo "ROM type: $ROM_TYPE"
+fi
+
+if [ ! -z "$CUSTOM_BUILD" ]; then
+    echo "Custom build: $CUSTOM_BUILD"
+fi
+
+if [ -n $FLAGS ]; then
+    echo "Flags: $FLAGS"
+fi
+
+if [[ docker info >/dev/null 2>&1 && -z $DISABLE_DOCKER]]; then
+    echo "Creating docker image"
+    ./create-image.sh
+    echo "Building in docker container"
+    ./build-in-docker.sh
+else
+    echo "Building without docker"
+    ./build-without-docker.sh
+fi
