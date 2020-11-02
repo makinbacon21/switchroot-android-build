@@ -16,7 +16,7 @@ fi
 
 TPATH="${BUILDBASE}/platform-tools:${BUILDBASE}/jdk-9.0.4/bin:${BUILDBASE}/bin"
 PATH="${TPATH}:${PATH}"
-CCACHE_DIR "${BUILDBASE}/android/.ccache"
+CCACHE_DIR="${BUILDBASE}/android/.ccache"
 
 export PATH
 export CCACHE_DIR

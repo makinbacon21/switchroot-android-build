@@ -89,22 +89,22 @@ else
     echo "ROM name: $ROM_NAME"
 fi
 
-if [ -z $ROM_TYPE ]; then
+if [[ -z $ROM_TYPE ]]; then
     echo "Missing ROM_TYPE env variable. Expected zip | images"
     exit 1
 else
     echo "ROM type: $ROM_TYPE"
 fi
 
-if [ ! -z "$CUSTOM_BUILD" ]; then
+if [[ ! -z "$CUSTOM_BUILD" ]]; then
     echo "Custom build: $CUSTOM_BUILD"
 fi
 
-if [ -n $FLAGS ]; then
+if [[ -n $FLAGS ]]; then
     echo "Flags: $FLAGS"
 fi
 
-if [[ docker info >/dev/null 2>&1 && -z $DISABLE_DOCKER]]; then
+if [[ -z $DISABLE_DOCKER ]]; then
     echo "Creating docker image"
     ./create-image.sh
     echo "Building in docker container"
