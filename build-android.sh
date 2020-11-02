@@ -104,7 +104,7 @@ if [[ -n $FLAGS ]]; then
     echo "Flags: $FLAGS"
 fi
 
-if [[ -z $DISABLE_DOCKER ]]; then
+if [[ "$(systemctl is-active docker)" = "active" && -z $DISABLE_DOCKER ]]; then
     echo "Creating docker image"
     ./create-image.sh
     echo "Building in docker container"

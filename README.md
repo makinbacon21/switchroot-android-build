@@ -1,6 +1,6 @@
-# Dockerized environment to build Switchroot Android image
+# Scripts and environment to build Switchroot Android image
 
-This repo provides A Dockerfile (`build-scripts/Dockerfile`) to create the basic environment for building Lineage and Switchroot Android.
+This repo provides a set of scripts and a Dockerfile (`build-scripts/Dockerfile`) to create the basic environment for building Lineage and Switchroot Android.
 
 **To use the prebuilt docker images, check out the [latest release](https://github.com/PabloZaiden/switchroot-android-build/releases/latest) in this GitHub repository.**
 
@@ -39,11 +39,12 @@ sudo docker run --privileged --rm -ti -e ROM_NAME=icosa -v "$PWD"/android:/build
 ### Build everything locally
 
 - Clone/Download this repo.
-- Either prepend `sudo` to the first command, or allow the current user to run `docker` without sudo
+- If you *don't want* to use `docker`, set any value to the `DISABLE_DOCKER` environment variable and set the `BUILDBASE` environment variable with the path of the base directory where the process will be executed. If `BUILDBASE` is not defined, it will use `$(pwd)/build`. Also, make sure to install all the prerequisites (a convenience script for Ubuntu (`install-prerequisites-ubuntu.sh`) is already provided)
+- If you're using `docker` Either prepend `sudo` to the first command, or allow the current user to run `docker` without sudo
 - Run `./build-android.sh --rom <icosa | foster | foster_tab> --rom-type <zip | images> --flags <nobuild | noupdate | nooutput | with_twrp>`  
 All parameters are optional. Default for --rom is `icosa`, default for --rom-type is `zip`, default for --flags is empty
-- When building the `zip`, the required output for installing via Hekate will be copied to `./android/output`, unless the `nooutput` flag is present
-- Any subsequent build execution will detect that the `./android/lineage` directoy contains files and will work under the assumption that the source code was already downloaded at least once. Then it will re-sync the repos, re-apply patches and re-build
+- When building the `zip`, the required output for installing via Hekate will be copied to `./android/output` or `$BUILDBASE/android/output`, unless the `nooutput` flag is present
+- Any subsequent build execution will detect that the `./android/lineage` or `$BUILDBASE/android/lineage` directoy contains files and will work under the assumption that the source code was already downloaded at least once. Then it will re-sync the repos, re-apply patches and re-build
 
 *Important*: The docker image builds everything in the `/build/android` directory, inside the container. The `./build-android.sh` script mounts the host directory `./android` as a volume to that directory in the container, so the sources and build output can live after the container is destroyed.
 
