@@ -72,4 +72,5 @@ if [[ ! -z $FLAGS && -z ${FLAGS##*with_twrp*} ]]; then
 fi
 
 # Ending message after built
-echo \#\# ANDROID BUILD COMPLETE. Please move contents of ./android/output to the root of your SD card. For more detailed instructions, check github page at https://github.com/PabloZaiden/switchroot-android-build
+echo \#\# ANDROID BUILD COMPLETE. Please move contents of the android/output directory to the root of your SD card. 
+echo \#\# For more detailed instructions, check the repository readme: https://github.com/PabloZaiden/switchroot-android-build
