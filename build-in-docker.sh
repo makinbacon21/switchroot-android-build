@@ -8,7 +8,7 @@ if [ $MKDIRSTATUS -ne 0 ]; then
     exit $MKDIRSTATUS
 fi
 
-echo Building $ROM_NAME
+echo Building ${ROM_NAME:-icosa}
 
 BUILDBASE="/build"
-docker run --privileged --rm -ti -e BUILD_HOSTNAME="$(hostname)" -e DUMMY_BUILD=${DUMMY_BUILD:-""} -e CUSTOM_BUILD="${CUSTOM_BUILD:-""}" -e ROM_NAME=$ROM_NAME -e ROM_TYPE=$ROM_TYPE -e FLAGS=${FLAGS:-""} -v "$PWD"/android:${BUILDBASE}/android pablozaiden/switchroot-android-build
+docker run --privileged --rm -ti -e BUILD_HOSTNAME="$(hostname)" -e DUMMY_BUILD=${DUMMY_BUILD:-""} -e CUSTOM_BUILD="${CUSTOM_BUILD:-""}" -e ROM_NAME=${ROM_NAME:-icosa} -e ROM_TYPE=${ROM_TYPE:-zip} -e FLAGS=${FLAGS:-""} -v "$PWD"/android:${BUILDBASE}/android pablozaiden/switchroot-android-build
