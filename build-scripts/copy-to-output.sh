@@ -49,7 +49,7 @@ FULL_GAPPS_URL=$(echo $BASE_GAPPS_URL"?use_mirror=autoselect&ts="$TIMESTAMP)
 curl -L -o ./android/output/opengapps_pico.zip $FULL_GAPPS_URL
 
 ## Patch zip file to accept any bootloader version
-OUTPUT_ZIP_FILE=$(ls -rt ./android/output/lineage-17.1-*-UNOFFICIAL-$ROM_NAME.zip | tail -1)
+OUTPUT_ZIP_FILE=$(ls ./android/output/lineage-17.1-*-UNOFFICIAL-$ROM_NAME.zip | tail -1)
 
 mkdir -p ./META-INF/com/google/android/
 unzip -p $OUTPUT_ZIP_FILE META-INF/com/google/android/updater-script > ./META-INF/com/google/android/updater-script.original
