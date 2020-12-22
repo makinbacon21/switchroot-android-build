@@ -19,6 +19,6 @@ function applyPatches {
 
 applyPatches "${BUILDBASE}/default-patches.txt"
 
-if [[ -f "${EXTRA_CONTENT}/patches.txt" ]]; then
-    applyPatches "${EXTRA_CONTENT}/patches.txt"
-then
+if [[ -f "$EXTRA_CONTENT/patches.txt" ]]; then
+    applyPatches "$EXTRA_CONTENT/patches.txt"
+fi
