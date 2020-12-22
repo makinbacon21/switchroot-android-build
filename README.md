@@ -53,6 +53,11 @@ All parameters are optional. Default for --rom is `icosa`, default for --rom-typ
 
 If that directory is not properly mounted, the build may fail.
 
+### Custom patches
+
+To apply custom patches to your build, create the `extra-content/patches.txt` file and add lines with the `<patch_base_dir>:<patch_path>` format. The same format is being used for default patches in `build-scripts/default-patches.txt`
+The file **must** end with an empty line.
+
 ### Convenience scripts
 
 There are several `.sh` scripts in the repo root, for convenience. You can find usage documentation inside each script.
