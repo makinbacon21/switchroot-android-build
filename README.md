@@ -44,7 +44,7 @@ sudo docker run --privileged --rm -ti -e ROM_NAME=icosa -v "$PWD"/android:/build
     - Set the `BUILDBASE` environment variable to the path of the base directory where the process will be executed. If `BUILDBASE` is not defined, it will use `$(pwd)/build`. 
     - Make sure to install all the prerequisites before starting (the convenience script `install-prerequisites-ubuntu.sh` is provided with this repo)
 - If you're using `docker` Either prepend `sudo` to the script execution, or allow the current user to run `docker` without `sudo`
-- Run `./build-android.sh --rom <icosa | foster | foster_tab> --rom-type <zip | images> --flags <nobuild | noupdate | nooutput | with_twrp>`  
+- Run `./build-android.sh --rom <icosa | foster | foster_tab> --rom-type <zip | images> --flags <nobuild | noupdate | nooutput>`  
 All parameters are optional. Default for --rom is `icosa`, default for --rom-type is `zip`, default for --flags is empty
 - When building the `zip`, the required output for installing via Hekate will be copied to `./android/output` or `$BUILDBASE/android/output`, unless the `nooutput` flag is present
 - Any subsequent build execution will detect that the `./android/lineage` or `$BUILDBASE/android/lineage` directoy contains files and will work under the assumption that the source code was already downloaded at least once. Then it will re-sync the repos, re-apply patches and re-build
