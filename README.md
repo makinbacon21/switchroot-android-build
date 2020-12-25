@@ -43,6 +43,7 @@ sudo docker run --privileged --rm -ti -e ROM_NAME=icosa -v "$PWD"/android:/build
     - Avoid having the docker service enabled *or* set any value to the `DISABLE_DOCKER` environment variable.
     - Set the `BUILDBASE` environment variable to the path of the base directory where the process will be executed. If `BUILDBASE` is not defined, it will use `$(pwd)/build`. 
     - Make sure to install all the prerequisites before starting (the convenience script `install-prerequisites-ubuntu.sh` is provided with this repo)
+    - If a previous build was created using docker, it will create a symbolic link to it instead of starting from scratch. This behavior can be disabled with the `DISABLE_SYMLINK_TO_DOCKER_BUILD` environment variable
 - If you're using `docker` Either prepend `sudo` to the script execution, or allow the current user to run `docker` without `sudo`
 - Run `./build-android.sh --rom <icosa | foster | foster_tab> --rom-type <zip | images> --flags <nobuild | noupdate | nooutput>`  
 All parameters are optional. Default for --rom is `icosa`, default for --rom-type is `zip`, default for --flags is empty

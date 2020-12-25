@@ -6,12 +6,14 @@ if [[ -z $BUILDBASE ]]; then
     echo "Using $BUILDBASE as build base directory"
 fi
 
-if [[ ! -d $BUILDBASE/android/lineage ]]; then
-    if [[ "$(ls -A ./android/lineage)" && -z $DISABLE_LINKING_TO_DOCKER_BUILD]]; then
+ANDROID_DIR="$BUILDBASE/android"
+
+if [[ ! -d $ANDROID_DIR/lineage ]]; then
+    if [[ "$(ls -A ./android/lineage)" && -z $DISABLE_SYMLINK_TO_DOCKER_BUILD ]]; then
         echo "Previous dockerized build found. Creating a symlink to it..."
-        ln -s $(pwd)/android $BUILDBASE/android
+        ln -s $(pwd)/android $ANDROID_DIR
     else
-        mkdir -p $BUILDBASE/android/lineage
+        mkdir -p $ANDROID_DIR/lineage
         MKDIRSTATUS=$?
 
         if [[ $MKDIRSTATUS -ne 0 ]]; then
@@ -21,9 +23,13 @@ if [[ ! -d $BUILDBASE/android/lineage ]]; then
     fi
 fi
 
+if [[ -L "$ANDROID_DIR" && -d "$ANDROID_DIR" ]]; then
+    echo "$ANDROID_DIR is a symlink from previous dockerized build"
+fi
+
 TPATH="${BUILDBASE}/platform-tools:${BUILDBASE}/jdk-9.0.4/bin:${BUILDBASE}/bin"
 PATH="${TPATH}:${PATH}"
-CCACHE_DIR="${BUILDBASE}/android/.ccache"
+CCACHE_DIR="$ANDROID_DIR/.ccache"
 
 export PATH
 export CCACHE_DIR
