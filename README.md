@@ -54,6 +54,13 @@ All parameters are optional. Default for --rom is `icosa`, default for --rom-typ
 
 If that directory is not properly mounted, the build may fail.
 
+### Custom patches
+
+To apply custom patches to your build, create the `extra-content/patches.txt` file and add lines with the `<patch_base_dir>:<patch_path>` format. The same format is being used for default patches in `build-scripts/default-patches.txt`
+The file **must** end with an empty line.
+
+When building with docker, make sure to also mount the `extra-content` directory to `${BUILDBASE}/extra-content` (as it is done in `build-in-docker.sh`)
+
 ### Convenience scripts
 
 There are several `.sh` scripts in the repo root, for convenience. You can find usage documentation inside each script.

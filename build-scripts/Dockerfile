@@ -8,6 +8,8 @@ ENV ROM_TYPE "zip"
 #preserve cache in next to the code to improve build times
 ENV CCACHE_DIR "${BUILDBASE}/android/.ccache"
 
+ENV EXTRA_CONTENT "${BUILDBASE}/extra-content"
+
 USER build
 WORKDIR ${BUILDBASE}
 
@@ -15,6 +17,7 @@ ADD --chown=build:build ./default-command.sh ${BUILDBASE}/default-command.sh
 ADD --chown=build:build ./get-sources.sh ${BUILDBASE}/get-sources.sh
 ADD --chown=build:build ./build.sh ${BUILDBASE}/build.sh
 ADD --chown=build:build ./repopic-and-patch.sh ${BUILDBASE}/repopic-and-patch.sh
+ADD --chown=build:build ./default-patches.txt ${BUILDBASE}/default-patches.txt
 ADD --chown=build:build ./reset-changes-update-sources.sh ${BUILDBASE}/reset-changes-update-sources.sh
 ADD --chown=build:build ./copy-to-output.sh ${BUILDBASE}/copy-to-output.sh
 
