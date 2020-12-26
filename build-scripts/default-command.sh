@@ -48,6 +48,18 @@ if [[ "$ROM_TYPE" == "zip" ]]; then
     fi
 fi
 
+if [[ -z $MAGISK ]]; then
+    if [[ -z $FLAGS || ! -z ${FLAGS##*nooutput*} ]]; then
+        if [[ -z $DUMMY_BUILD ]]; then
+            echo "Pre-rooting..."
+            cd ${BUILDBASE}
+            ./magisker.sh
+        else
+            echo Dummy executed magisker.sh
+        fi
+    fi
+fi
+
 # Ending message after built
 echo \#\# ANDROID BUILD COMPLETE. Please move contents of the android/output directory to the root of your SD card. 
 echo \#\# For more detailed instructions, check the repository readme: https://github.com/PabloZaiden/switchroot-android-build
