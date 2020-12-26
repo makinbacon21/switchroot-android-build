@@ -3,7 +3,7 @@
 mkdir -p ./android/lineage
 MKDIRSTATUS=$?
 
-if [ $MKDIRSTATUS -ne 0 ]; then
+if [[ $MKDIRSTATUS -ne 0 ]]; then
     echo "Could not create work folders; check permissions."
     exit $MKDIRSTATUS
 fi

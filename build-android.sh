@@ -9,7 +9,6 @@
 ##      - nobuild: avoids running the build process.
 ##      - noupdate: avoids running the sources update process.
 ##      - nooutput: avoids copying the build to the output directory.
-##      - with_twrp: builds TWRP after a successful Android build and copies it to the output directory
 ##
 ## If the ENV variable DUMMY_BUILD has some non-empty value, the actual execution of scripts 
 ## will be replaced with dummy messages. Used to quickly test the other parameters.
@@ -51,7 +50,7 @@ while (($# > 0))
         ;;
 
     --flags)
-        if [ -z ${Value##*--*} ]; then
+        if [[ -z ${Value##*--*} ]]; then
             echo "Flags must come last and the arguments must not be empty."
             exit 1
         fi
@@ -81,8 +80,7 @@ export ROM_TYPE
 export FLAGS
 
 
-if [ -z $ROM_NAME ];
-then
+if [[ -z $ROM_NAME ]]; then
     echo "Missing ROM_NAME env variable. Expected icosa | foster | foster_tab"
     exit 1
 else
@@ -110,6 +108,6 @@ if [[ "$(systemctl is-active docker)" = "active" && -z $DISABLE_DOCKER ]]; then
     echo "Building in docker container"
     ./build-in-docker.sh
 else
-    echo "Building without docker"
-    ./build-without-docker.sh
+    echo "Building in Linux"
+    ./build-in-linux.sh
 fi
