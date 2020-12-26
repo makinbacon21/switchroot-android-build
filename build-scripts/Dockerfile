@@ -8,6 +8,8 @@ ENV ROM_TYPE "zip"
 #preserve cache in next to the code to improve build times
 ENV CCACHE_DIR "${BUILDBASE}/android/.ccache"
 
+ENV EXTRA_CONTENT "${BUILDBASE}/extra-content"
+
 USER build
 WORKDIR ${BUILDBASE}
 
@@ -17,6 +19,7 @@ ADD --chown=build:build ./add-twrp-repo.sh ${BUILDBASE}/add-twrp-repo.sh
 ADD --chown=build:build ./build.sh ${BUILDBASE}/build.sh
 ADD --chown=build:build ./build-twrp.sh ${BUILDBASE}/build-twrp.sh
 ADD --chown=build:build ./repopic-and-patch.sh ${BUILDBASE}/repopic-and-patch.sh
+ADD --chown=build:build ./default-patches.txt ${BUILDBASE}/default-patches.txt
 ADD --chown=build:build ./reset-changes-update-sources.sh ${BUILDBASE}/reset-changes-update-sources.sh
 ADD --chown=build:build ./copy-to-output.sh ${BUILDBASE}/copy-to-output.sh
 ADD --chown=build:build ./copy-twrp-to-output.sh ${BUILDBASE}/copy-twrp-to-output.sh

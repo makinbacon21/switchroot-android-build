@@ -7,9 +7,17 @@ ${BUILDBASE}/android/lineage/vendor/lineage/build/tools/repopick.py -t icosa-bt-
 ${BUILDBASE}/android/lineage/vendor/lineage/build/tools/repopick.py 287339
 ${BUILDBASE}/android/lineage/vendor/lineage/build/tools/repopick.py 284553
 
-# Temporary patch to use current coreboot
+function applyPatches {
+    PATCHES_FILE=$1
 
-cd ${BUILDBASE}/android/lineage/bionic
-patch -p1 < ${BUILDBASE}/android/lineage/.repo/local_manifests/patches/bionic_intrinsics.patch
-cd ${BUILDBASE}/android/lineage/frameworks/base
-patch -p1 < ${BUILDBASE}/android/lineage/.repo/local_manifests/patches/frameworks_base_nvcpl.patch
+    while read -r line; do
+        IFS=':' read -r -a parts <<< "$line"
+        eval "patch -p1 -d ${parts[0]} -i ${parts[1]}"
+    done < $PATCHES_FILE
+} 
+
+applyPatches "${BUILDBASE}/default-patches.txt"
+
+if [[ -f "$EXTRA_CONTENT/patches.txt" ]]; then
+    applyPatches "$EXTRA_CONTENT/patches.txt"
+fi

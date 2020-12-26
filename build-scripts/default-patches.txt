@@ -1,0 +1,2 @@
+${BUILDBASE}/android/lineage/bionic:${BUILDBASE}/android/lineage/.repo/local_manifests/patches/bionic_intrinsics.patch
+${BUILDBASE}/android/lineage/frameworks/base:${BUILDBASE}/android/lineage/.repo/local_manifests/patches/frameworks_base_nvcpl.patch
