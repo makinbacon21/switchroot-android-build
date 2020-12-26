@@ -5,6 +5,9 @@
 
 cd ${BUILDBASE}
 
+# set gapps default to pico
+GAPPS="pico"
+
 ZIP_FILE=$(ls ./android/lineage/out/target/product/$ROM_NAME/lineage-17.1-*-UNOFFICIAL-$ROM_NAME.zip | tail -1)
 
 ## Copy to output
@@ -33,11 +36,18 @@ curl -L -o ./android/output/bootloader/ini/00-android.ini https://gitlab.com/Zac
 echo "Downloading boot scripts..."
 curl -L -o ./android/output/switchroot/android/common.scr https://gitlab.com/switchroot/bootstack/switch-uboot-scripts/-/jobs/artifacts/master/raw/common.scr?job=build
 curl -L -o ./android/output/switchroot/android/boot.scr https://gitlab.com/switchroot/bootstack/switch-uboot-scripts/-/jobs/artifacts/master/raw/sd.scr?job=build
-echo "Downloading Pico Open GApps..."
 
-# get base URL for pico gapps
+# swap gapps type to tvmini for atv
+if [ $ROM_NAME = "foster" ];
+then
+	GAPPS="tvmini"
+fi
+
+echo "Downloading $GAPPS Open GApps..."
+
+# get base URL for gapps
 BASE_GAPPS_URL=$(curl -L https://sourceforge.net/projects/opengapps/rss?path=/arm64 \
-	| grep -Po "https:\/\/.*10\.0-pico.*zip\/download" \
+	| grep -Po "https:\/\/.*10\.0-$GAPPS.*zip\/download" \
 	| head -n 1 \
 	| sed "s/\/download//" \
 	| sed "s/files\///" \
@@ -46,7 +56,7 @@ BASE_GAPPS_URL=$(curl -L https://sourceforge.net/projects/opengapps/rss?path=/ar
 
 TIMESTAMP=$(echo $(( $(date '+%s%N') / 1000000000)))
 FULL_GAPPS_URL=$(echo $BASE_GAPPS_URL"?use_mirror=autoselect&ts="$TIMESTAMP)
-curl -L -o ./android/output/opengapps_pico.zip $FULL_GAPPS_URL
+curl -L -o ./android/output/opengapps_$GAPPS.zip $FULL_GAPPS_URL
 
 ## Patch zip file to accept any bootloader version
 OUTPUT_ZIP_FILE=$(ls ./android/output/lineage-17.1-*-UNOFFICIAL-$ROM_NAME.zip | tail -1)
