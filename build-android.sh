@@ -108,6 +108,6 @@ if [[ "$(systemctl is-active docker)" = "active" && -z $DISABLE_DOCKER ]]; then
     echo "Building in docker container"
     ./build-in-docker.sh
 else
-    echo "Building in current system"
-    ./build-in-current-system.sh
+    echo "Building in Linux"
+    ./build-in-linux.sh
 fi
