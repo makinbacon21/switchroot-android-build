@@ -12,8 +12,7 @@ function applyPatches {
 
     while read -r line; do
         IFS=':' read -r -a parts <<< "$line"
-        eval "cd ${parts[0]}"
-        eval "patch -p1 < ${parts[1]}"
+        eval "patch -p1 -d ${parts[0]} -i ${parts[1]}"
     done < $PATCHES_FILE
 } 
 
