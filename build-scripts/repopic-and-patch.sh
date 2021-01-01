@@ -23,3 +23,8 @@ applyPatches "${BUILDBASE}/default-patches.txt"
 if [[ -f "$EXTRA_CONTENT/patches.txt" ]]; then
     applyPatches "$EXTRA_CONTENT/patches.txt"
 fi
+
+### TEMPORARY PATCH UNTIL THERE IS AN UPDATED TWRP
+echo "Reverting 0e1c660d commit to support older TWRP"
+cd ${BUILDBASE}/android/lineage/device/nvidia/foster
+git revert 0e1c660d -n
