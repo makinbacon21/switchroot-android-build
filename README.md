@@ -61,10 +61,6 @@ The file **must** end with an empty line.
 
 When building with docker, make sure to also mount the `extra-content` directory to `${BUILDBASE}/extra-content` (as it is done in `build-in-docker.sh`)
 
-### Pre-Rooting
-
-Magisk can pre-patch your `boot.img` so your install is rooted from first boot. Set the environment variable `MAGISK` to anything that's not null and run the build as usual.
-
 ### Convenience scripts
 
 There are several `.sh` scripts in the repo root, for convenience. You can find usage documentation inside each script.
