@@ -7,7 +7,7 @@ if [[ "$(ls -A ./android/lineage)" ]]; then
 else
     if [ -d ./Android ] && [[ "$(cat /proc/version)" == *"microsoft"* ]];
     then  
-        echo "WSL2 distro found with no case sensitivity--enabling NTFS case-sensitivity..."
+        echo "WSL2 distro found with no case sensitivity, enabling NTFS case-sensitivity..."
         powershell.exe -File "./wsl_cs.ps1" -Buildbase "${BUILDBASE}"
     fi
     if [[ -z $DUMMY_BUILD ]]; then
