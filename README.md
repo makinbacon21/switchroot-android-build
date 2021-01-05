@@ -14,7 +14,7 @@ Also, if you have built Switchroot *Pie* before, delete the whole `./android` di
 After doing that, you can use this to generate the content of your SD card for flashing and installing via Hekate and TWRP.
 
 ## Build using the image in Dockerhub:
-- Boot Linux (natively or a VM. Don't use *WSL* or *WSL2* unless you *really* know what you are doing, since it has severe performance issues with this particular scenario)
+- Boot Linux (natively or a VM. Don't use *WSL* or *WSL2* with the Dockerized build unless you *really* know what you are doing, since it has severe performance issues with this particular scenario)
 - Install `docker` (**proper docker installation**: `apt install docker.io` if on Ubuntu. It *might* work if installed via Snap with the latest changes, but it wasn't tested. It now requires `--privileged` mode) 
 - Go to a directory on a drive where there are at least 250GB of free space.
 - Run the following commands:
