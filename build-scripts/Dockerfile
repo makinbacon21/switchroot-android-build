@@ -20,7 +20,6 @@ ADD --chown=build:build ./repopic-and-patch.sh ${BUILDBASE}/repopic-and-patch.sh
 ADD --chown=build:build ./default-patches.txt ${BUILDBASE}/default-patches.txt
 ADD --chown=build:build ./reset-changes-update-sources.sh ${BUILDBASE}/reset-changes-update-sources.sh
 ADD --chown=build:build ./copy-to-output.sh ${BUILDBASE}/copy-to-output.sh
-ADD --chown=build:build ./wsl_cs.ps1 ${BUILDBASE}/wsl_cs.ps1.sh
 
 RUN chmod +x ./*.sh
 

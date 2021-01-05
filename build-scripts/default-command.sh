@@ -5,7 +5,7 @@ cd ${BUILDBASE}
 if [[ "$(ls -A ./android/lineage)" ]]; then
     echo "Sources found. Skipping..."
 else
-    if [ -d ./Android ] && [[ "$(cat /proc/version)" == *"microsoft"* ]];
+    if [[ -d ./Android ]] && [[ "$(cat /proc/version)" == *"microsoft"* ]];
     then  
         echo "WSL2 distro found with no case sensitivity, enabling NTFS case-sensitivity..."
         powershell.exe -File "./wsl_cs.ps1" -Buildbase "${BUILDBASE}"
