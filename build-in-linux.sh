@@ -39,6 +39,7 @@ export EXTRA_CONTENT
 
 cp ./build-scripts/*.sh $BUILDBASE
 cp ./build-scripts/*.txt $BUILDBASE
+cp ./build-scripts/*.ps1 $BUILDBASE
 
 echo Building $ROM_NAME
 cd $BUILDBASE
