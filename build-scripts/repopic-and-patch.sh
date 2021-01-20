@@ -15,9 +15,9 @@ function applyPatches {
         IFS=':' read -r -a parts <<< "$line"
 
         if [[ "${parts[2]}" == "git" ]]; then
-            echo "Applying patch ${parts[1]} with git apply"
+            echo "Applying patch ${parts[1]} with git am"
             eval "cd ${parts[0]}"
-            eval "git apply < ${parts[1]}"
+            eval "git am ${parts[1]}"
             cd ${BUILDBASE}/android/lineage/
         else
             echo "Applying patch ${parts[1]} with patch"
