@@ -21,6 +21,10 @@ function applyPatches {
 
 applyPatches "${BUILDBASE}/default-patches.txt"
 
+cd ${BUILDBASE}/android/lineage/frameworks/native
+git apply < ${BUILDBASE}/android/lineage/.repo/local_manifests/patches/vendor_firmware_icosa.patch
+cd ${BUILDBASE}/android/lineage/
+
 if [[ -f "$EXTRA_CONTENT/patches.txt" ]]; then
     applyPatches "$EXTRA_CONTENT/patches.txt"
 fi
