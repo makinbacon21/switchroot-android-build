@@ -1,3 +1,4 @@
 ${BUILDBASE}/android/lineage/bionic:${BUILDBASE}/android/lineage/.repo/local_manifests/patches/bionic_intrinsics.patch
 ${BUILDBASE}/android/lineage/device/nvidia/foster_tab:${BUILDBASE}/android/lineage/.repo/local_manifests/patches/device_nvidia_foster_tab-beyonder.patch
 ${BUILDBASE}/android/lineage/frameworks/native:${BUILDBASE}/android/lineage/.repo/local_manifests/patches/frameworks_native-mouse.patch
+${BUILDBASE}/android/lineage/vendor/firmware:${BUILDBASE}/android/lineage/.repo/local_manifests/patches/vendor_firmware_icosa.patch:git
