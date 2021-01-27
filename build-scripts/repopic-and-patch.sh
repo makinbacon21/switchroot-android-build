@@ -1,12 +1,12 @@
 #!/bin/bash
 
 cd ${BUILDBASE}/android/lineage/
-${BUILDBASE}/android/lineage/vendor/lineage/build/tools/repopick.py -t nvidia-enhancements-q
 ${BUILDBASE}/android/lineage/vendor/lineage/build/tools/repopick.py -t icosa-bt-lineage-17.1
 ${BUILDBASE}/android/lineage/vendor/lineage/build/tools/repopick.py -t nvidia-shieldtech-q
 ${BUILDBASE}/android/lineage/vendor/lineage/build/tools/repopick.py -t nvidia-beyonder-q
 ${BUILDBASE}/android/lineage/vendor/lineage/build/tools/repopick.py 300860
 ${BUILDBASE}/android/lineage/vendor/lineage/build/tools/repopick.py 287339
+${BUILDBASE}/android/lineage/vendor/lineage/build/tools/repopick.py 302339
 ${BUILDBASE}/android/lineage/vendor/lineage/build/tools/repopick.py 284553
 
 function applyPatches {
@@ -14,8 +14,16 @@ function applyPatches {
 
     while read -r line; do
         IFS=':' read -r -a parts <<< "$line"
-        echo "Applying patch ${parts[1]}"
-        eval "patch -p1 -d ${parts[0]} -i ${parts[1]}"
+
+        if [[ "${parts[2]}" == "git" ]]; then
+            echo "Applying patch ${parts[1]} with git am"
+            eval "cd ${parts[0]}"
+            eval "git am ${parts[1]}"
+            cd ${BUILDBASE}/android/lineage/
+        else
+            echo "Applying patch ${parts[1]} with patch"
+            eval "patch -p1 -d ${parts[0]} -i ${parts[1]}"
+        fi
     done < $PATCHES_FILE
 } 
 
@@ -28,8 +36,3 @@ cd ${BUILDBASE}/android/lineage/
 if [[ -f "$EXTRA_CONTENT/patches.txt" ]]; then
     applyPatches "$EXTRA_CONTENT/patches.txt"
 fi
-
-### TEMPORARY PATCH UNTIL THERE IS AN UPDATED TWRP
-echo "Reverting 0e1c660d commit to support older TWRP"
-cd ${BUILDBASE}/android/lineage/device/nvidia/foster
-git revert 0e1c660d -n
