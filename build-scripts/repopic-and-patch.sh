@@ -7,6 +7,7 @@ ${BUILDBASE}/android/lineage/vendor/lineage/build/tools/repopick.py -t nvidia-be
 ${BUILDBASE}/android/lineage/vendor/lineage/build/tools/repopick.py 300860
 ${BUILDBASE}/android/lineage/vendor/lineage/build/tools/repopick.py 287339
 ${BUILDBASE}/android/lineage/vendor/lineage/build/tools/repopick.py 302339
+${BUILDBASE}/android/lineage/vendor/lineage/build/tools/repopick.py 302554
 ${BUILDBASE}/android/lineage/vendor/lineage/build/tools/repopick.py 284553
 
 function applyPatches {
@@ -29,8 +30,6 @@ function applyPatches {
 
 applyPatches "${BUILDBASE}/default-patches.txt"
 
-cd ${BUILDBASE}/android/lineage/frameworks/native
-git apply < ${BUILDBASE}/android/lineage/.repo/local_manifests/patches/vendor_firmware_icosa.patch
 cd ${BUILDBASE}/android/lineage/
 
 if [[ -f "$EXTRA_CONTENT/patches.txt" ]]; then
